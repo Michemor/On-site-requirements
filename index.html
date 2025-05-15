@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On Site Enquiries Form</title>
+    <link  rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div>
+        <div class = 'logo'>
+            <img src="images/logo.png"/>
+        </div>
+        <div class="title">
+            <p>On-Site Enquiries Form</p>
+        </div>
+    </div> 
+    <div class="enquiries">
+<form action = "https://www.superlender.co.ke/test/test-api " method="post" class="person-details">
+
+    <div class="label1">
+    <label for="username"> Full Name* </label> <br>
+    <input type="text" id="username" name="username" required /> <br>
+    </div>
+
+    <div class="label2">
+    <label for="email"> Email* </label> <br>
+    <input type="text" id="email" name="email" required/> <br>
+</div>
+
+    <div class="label3">
+    <label for="phone">Phone</label> <br>
+    <input type="text" id="phone" name="phone" required /> <br>
+</div>
+
+    <div class="label4">
+    <label for="address"> Address </label> <br>
+    <input type="text" id="address" name="address" required /> <br>
+
+    <button type="submit"> SUBMIT </button>
+</div>
+</form>
+</div>  
+<script src="js/index.js"></script>
+</body>
+</html>
