@@ -1,30 +1,46 @@
-$( document ).ready(() => {
-    $("button").click(() => {
-    const username = $('#username').val();
-    const email = $('#email').val();
-    const phone = $('#phone').val();
-    const address = $('#address').val();
+window.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    if (!form) return;
 
-    const body = {
-        full_name: username,
-        email: email,
-        phone: phone,
-        address: address,
-        extra_field: ""
-    };
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const data = {
+            full_name: document.getElementById('username').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            address: document.getElementById('address').value,
+            extra_field: ""
+        };
+        const datajson = JSON.stringify(data);
+        const url = 'https://www.superlender.co.ke/test/test-api';
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: datajson
+        };
+        fetch(url, options)
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.json();
+            })
+            .then(data => {
+               if(data.success) {
+                    alert('Your information has been submitted successfully!');
+                    document.getElementById('username').value = '';
+                    document.getElementById('email').value = '';
+                    document.getElementById('phone').value = '';
+                    document.getElementById('address').value = '';
 
-    $.ajax({
-        url: "https://www.superlender.co.ke/test/test-api",
-        type: "POST",
-        contentType: 'application/json',
-        data: JSON.stringify(body),
-        success: () => {
-        alert('Submitted Successfully');
-        $('#username').val('');
-        $('#email').val('');
-        $('#phone').val('');
-        $('#address').val('');
-    },
-    });
+                    console.log(data);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(() => 
+                alert('There was an error in processing your request. Kindly wait and try again later.', ));
     });
 });
+
+
